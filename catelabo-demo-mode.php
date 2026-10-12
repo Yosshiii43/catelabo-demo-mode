@@ -72,10 +72,27 @@ function catelabo_demo_styles() {
 		.catelabo-demo-bar a:hover{
 			opacity:.8;
 		}
+		/* 文言の区切り。1行に入らないときは「(」の前で折り返す */
+		.catelabo-demo-bar__part{
+			display:inline-block;
+		}
 	</style>
 	<?php
 }
 add_action( 'wp_head', 'catelabo_demo_styles' );
+
+/**
+ * 告知文のHTML。「(」の前で区切り、各部分を折り返さない塊にする。
+ * 横に入りきらないとき、「(架空の猫舎です)」の途中で改行されるのを防ぐ。
+ */
+function catelabo_demo_notice_html() {
+	$parts = preg_split( '/(?=\()/u', CATELABO_DEMO_NOTICE_TEXT, -1, PREG_SPLIT_NO_EMPTY );
+	$html  = '';
+	foreach ( $parts as $part ) {
+		$html .= '<span class="catelabo-demo-bar__part">' . esc_html( $part ) . '</span>';
+	}
+	return $html;
+}
 
 /** バー本体のマークアップ */
 function catelabo_demo_bar_markup() {
@@ -83,13 +100,13 @@ function catelabo_demo_bar_markup() {
 	if ( empty( $url ) ) {
 		printf(
 			'<div class="catelabo-demo-bar" role="note"><span>%s</span></div>',
-			esc_html( CATELABO_DEMO_NOTICE_TEXT )
+			catelabo_demo_notice_html() // 中で esc_html 済み
 		);
 		return;
 	}
 	printf(
 		'<div class="catelabo-demo-bar" role="note"><span>%s</span><a href="%s">%s</a></div>',
-		esc_html( CATELABO_DEMO_NOTICE_TEXT ),
+		catelabo_demo_notice_html(), // 中で esc_html 済み
 		esc_url( $url ),
 		esc_html( catelabo_demo_link_label() )
 	);
