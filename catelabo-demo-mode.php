@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Catelabo Demo Mode
  * Description: デモサイト専用の3層明示(上部常時バー+フッター注記/CF7送信無効化/noindex,nofollow)と、SNSアイコンのデモ表示(リンク無効)。デモ環境でのみ有効化すること。仕様正本: product/docs/demosite_design_v1_0.md ⑥
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author: Mew Works (Catelabo)
  * Author URI: https://catelabo.com
  * License: GPL-2.0-or-later
