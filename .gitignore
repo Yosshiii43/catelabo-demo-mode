@@ -1,0 +1,12 @@
+# OS
+.DS_Store
+Thumbs.db
+__MACOSX/
+
+# エディタ
+.vscode/
+.idea/
+
+# 配布用zip・ログ
+*.zip
+*.log
