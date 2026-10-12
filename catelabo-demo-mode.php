@@ -19,14 +19,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 /* =========================================================
  * 設定(文言・リンク先)— 仕様正本 demosite_design_v1_0.md ⑥ の確定文言
  * ======================================================= */
-const CATELABO_DEMO_NOTICE_TEXT = 'このサイトはキャテラボの制作デモです(架空の猫舎です)';
+const CATELABO_DEMO_NOTICE_TEXT = 'このサイトはキャテラボの制作デモです(架空のキャッテリーです)';
 const CATELABO_DEMO_LINK_URL    = 'https://catelabo.com/service/?utm_source=demo&utm_medium=bar'; // catelabo.com公開済み(2026-10-06)。デモ上部バーからサービスページへ(product/docs/catelabo.com_CTA導線設計_v1.1.md §5)
 const CATELABO_DEMO_LINK_LABEL  = '料金・サービスを見る →';
 const CATELABO_DEMO_FORM_TEXT   = 'デモサイトのため送信されません';
 const CATELABO_DEMO_SNS_TEXT    = 'デモサイトのため、SNSへのリンクは無効です';
 const CATELABO_DEMO_SNS_HREF    = '#catelabo-demo-sns';
 
-/** デモで並べるSNS(猫舎がよく使う組み合わせ)。キーは catelabo-base の catelabo_sns_services() に合わせる */
+/** デモで並べるSNS(キャッテリーがよく使う組み合わせ)。キーは catelabo-base の catelabo_sns_services() に合わせる */
 function catelabo_demo_sns_shown() {
 	return apply_filters( 'catelabo_demo_sns_shown', array( 'instagram', 'youtube', 'tiktok', 'line' ) );
 }
@@ -83,7 +83,7 @@ add_action( 'wp_head', 'catelabo_demo_styles' );
 
 /**
  * 告知文のHTML。「(」の前で区切り、各部分を折り返さない塊にする。
- * 横に入りきらないとき、「(架空の猫舎です)」の途中で改行されるのを防ぐ。
+ * 横に入りきらないとき、「(架空のキャッテリーです)」の途中で改行されるのを防ぐ。
  */
 function catelabo_demo_notice_html() {
 	$parts = preg_split( '/(?=\()/u', CATELABO_DEMO_NOTICE_TEXT, -1, PREG_SPLIT_NO_EMPTY );
@@ -225,7 +225,7 @@ add_action( 'wp_head', function () {
 
 /* =========================================================
  * 層4: SNSアイコンのデモ表示(リンク無効)
- * 架空の猫舎として、猫舎がよく使うSNSを並べて見せる。
+ * 架空のキャッテリーとして、キャッテリーがよく使うSNSを並べて見せる。
  * カスタマイザーの入力に関係なく、ここで決めたSNSだけを表示し、
  * どのアイコンも実在のアカウントへは移動させない(押すと案内文を表示)。
  * テーマには手を入れず theme_mod_ フィルターで差し替えるので、無効化すれば元に戻る。
