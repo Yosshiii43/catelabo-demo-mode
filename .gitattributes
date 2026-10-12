@@ -1,0 +1,3 @@
+# 書き出し（git archive）から外すもの。No.104
+.gitattributes  export-ignore
+.gitignore      export-ignore
